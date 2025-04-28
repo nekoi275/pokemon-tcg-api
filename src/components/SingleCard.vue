@@ -17,5 +17,11 @@ defineProps<{
       :alt="card.name"
       v-if="card.imageUrl"
     />
+    <img
+      class="mb-6"
+      src="@/assets/no_image.jpg"
+      :alt="card.name"
+      v-if="!card.imageUrl"
+    />
   </div>
 </template>

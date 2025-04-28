@@ -73,3 +73,26 @@ export const fetchAllCards = async (): Promise<CardBrief[]> => {
 
   return cards;
 };
+
+export const fetchSomeCards = async (
+  page: number,
+  itemsPerPage: number
+): Promise<CardBrief[]> => {
+  const response = await fetch(
+    `${BASE_URL}/cards?pagination:page=${page}&pagination:itemsPerPage=${itemsPerPage}`
+  );
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const cards = await response.json();
+  
+  cards.forEach((card: CardBrief) => {
+    if (card.image) {
+      card.imageUrl = formatImageUrl(card.image);
+    }
+  });
+
+  return cards;
+};
