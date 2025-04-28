@@ -1,1 +1,13 @@
 @import "tailwindcss";
+@config "../tailwind.config.js";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply text-sm sm:text-base md:text-lg lg:text-2xl;
+    background-color: #202833;
+    color: #c5c6c8;
+  }
+}

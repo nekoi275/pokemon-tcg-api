@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { Card } from "@/api/tcgdex";
+import type { CardBrief } from "@/api/tcgdex";
 
 defineProps<{
-  card: Card;
+  card: CardBrief;
 }>();
 </script>
 
 <template>
   <div
-    class="bg-teal-100 w-64 p-6 rounded-lg shadow-xl/30 shadow-cyan-500/50 text-cyan-950"
+    class="bg-grey-50 w-64 p-6 rounded-lg shadow-xl/30 border-6 border-cyan-100 shadow-cyan-50 text-dark-100 cursor-pointer"
   >
     <h2 class="text-center text-2xl mb-6">{{ card.name }}</h2>
     <img
@@ -17,8 +17,5 @@ defineProps<{
       :alt="card.name"
       v-if="card.imageUrl"
     />
-    <div>
-      {{ card.description }}
-    </div>
   </div>
 </template>
