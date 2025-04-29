@@ -1,9 +1,9 @@
 <script setup lang="ts">
-//import CardsContainer from "@/components/CardsContainer.vue";
+import CardsContainer from "@/components/CardsContainer.vue";
 import LandingPage from "@/components/LandingPage.vue";
 </script>
 
 <template>
   <LandingPage />
-  <!-- <CardsContainer /> -->
+  <CardsContainer />
 </template>
