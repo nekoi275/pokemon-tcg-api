@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import CardsContainer from "@/components/CardsContainer.vue";
-import LandingPage from "@/components/LandingPage.vue";
+import Header from "@/components/Header.vue";
 </script>
 
 <template>
-  <LandingPage />
-  <CardsContainer />
+  <Header />
+  <router-view />
 </template>

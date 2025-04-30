@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import Slide1 from "@/assets/slide_1.jpg";
-import Slide2 from "@/assets/slide_2.jpg";
-import Slide3 from "@/assets/slide_3.jpg";
 
-const originalSlides = [
-  { img: Slide1, heading: "Welcome to the Pokemon TCG API Website!", text: "This is a simple demo project built with Vue 3 and Tailwind CSS. Explore Pokémon TCG cards fetched from an external API in a clean, user-friendly interface." },
-  { img: Slide2, heading: "This is a training/test project.", text: "It was created to practice frontend development using Vue 3 and Tailwind CSS. The site displays Pokémon TCG card data but has no commercial purpose." },
-  { img: Slide3, heading: "This site is a frontend for the TCGdex API.", text: "It doesn’t sell anything—it’s just a learning project to gain experience with Vue. All card data comes from the API and is displayed for demonstration purposes." },
-];
+interface Slide {
+  img: string;
+  heading: string;
+  text: string;
+}
+
+const props = defineProps<{
+  slides: Slide[];
+  autoSlideInterval?: number;
+}>();
+
+const originalSlides = props.slides;
 const slides = [...originalSlides, originalSlides[0]];
 const currentSlide = ref(0);
 let intervalId: number;
@@ -44,7 +48,10 @@ const goToSlide = (index: number) => {
 };
 
 const startAutoSlide = () => {
-  intervalId = window.setInterval(nextSlide, 5000);
+  intervalId = window.setInterval(
+    nextSlide,
+    props.autoSlideInterval || 5000
+  );
 };
 
 const stopAutoSlide = () => {
@@ -70,14 +77,14 @@ onBeforeUnmount(() => {
       }"
     >
       <section
-        v-for="(_, index) in slides"
+        v-for="(slide, index) in slides"
         :key="index"
-        :style="{ backgroundImage: `url(${slides[index].img})` }"
+        :style="{ backgroundImage: `url(${slide.img})` }"
         class="h-screen w-full flex-shrink-0 bg-cover bg-center"
       >
-        <div class="p-8 bg-dark-50 w-64 mt-20 ml-20 rounded-xl">
-            <h3 class="text-2xl pb-4">{{ slides[index].heading }}</h3>
-            <p>{{ slides[index].text }}</p>
+        <div class="p-8 bg-dark-50 w-96 mt-20 ml-30 rounded-xl">
+          <h3 class="text-2xl pb-4">{{ slide.heading }}</h3>
+          <p>{{ slide.text }}</p>
         </div>
       </section>
     </div>

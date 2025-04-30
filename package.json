@@ -13,7 +13,8 @@
     "@tcgdex/sdk": "^2.6.0",
     "@types/node": "^22.15.2",
     "tailwindcss": "^4.1.4",
-    "vue": "^3.3.11"
+    "vue": "^3.3.11",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
