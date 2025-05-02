@@ -3,5 +3,5 @@ import CardsContainer from "@/components/CardsContainer.vue";
 </script>
 
 <template>
-  <CardsContainer />
+  <CardsContainer class="pt-30" />
 </template>

@@ -63,7 +63,7 @@ const slides = ref([
     <router-link class="col-span-2 text-2xl w-3/4 border-8 border-cyan-50 p-4 rounded-xl cursor-pointer border-dashed hover:border-cyan-100 hover:shadow-2xl" to="/cards"
       >Check out the cards</router-link
     >
-    <router-link class="col-span-2 row-span-2 text-2xl w-3/4 border-8 border-cyan-50 p-10 rounded-xl cursor-pointer border-dotted hover:border-cyan-100 hover:shadow-2xl">Find out more info</router-link>
-    <router-link class="col-span-2 row-span-3 text-2xl w-3/4 border-8 border-cyan-100 p-10 rounded-xl cursor-pointer hover:border-cyan-50 hover:shadow-2xl">Contact me</router-link>
+    <router-link to="/about" class="col-span-2 row-span-2 text-2xl w-3/4 border-8 border-cyan-50 p-10 rounded-xl cursor-pointer border-dotted hover:border-cyan-100 hover:shadow-2xl">Find out more info</router-link>
+    <router-link to="/contact" class="col-span-2 row-span-3 text-2xl w-3/4 border-8 border-cyan-100 p-10 rounded-xl cursor-pointer hover:border-cyan-50 hover:shadow-2xl">Contact me</router-link>
   </section>
 </template>
