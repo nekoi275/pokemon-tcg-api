@@ -3,7 +3,20 @@ import About1 from "@/assets/about_1.jpg";
 </script>
 
 <template>
-  <section>
+  <section
+    class="min-h-screen"
+    :style="{
+      '--dot-bg': '#202833',
+      '--dot-color': '#66fcf1',
+      '--dot-size': '1px',
+      '--dot-space': '22px',
+      background: `
+        linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+        linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+        var(--dot-color)
+      `,
+    }"
+  >
     <img class="w-1/2 m-auto pt-30" :src="About1" />
     <p class="block w-1/2 m-auto py-4">
       The Pokémon Trading Card Game (Japanese: ポケモンカードゲーム, Hepburn:
@@ -43,10 +56,10 @@ import About1 from "@/assets/about_1.jpg";
       Pokémon Trading Card Game Pocket (mobile) in 2024.
     </p>
     <p class="block w-1/2 m-auto py-4">
-      As of March 2024, the game has produced over 64.8 billion cards
-      worldwide. Beside formal competitions and informal battling, the
-      Pokémon TCG has also been the subject of collecting hobbies, with an
-      extensive market for individual Pokémon cards, packs, and ephemera.
+      As of March 2024, the game has produced over 64.8 billion cards worldwide.
+      Beside formal competitions and informal battling, the Pokémon TCG has also
+      been the subject of collecting hobbies, with an extensive market for
+      individual Pokémon cards, packs, and ephemera.
     </p>
   </section>
 </template>
