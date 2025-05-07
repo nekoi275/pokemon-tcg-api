@@ -41,7 +41,7 @@ const currentYear = computed(() => new Date().getFullYear());
           </a>
         </div>
         <div>
-          <span>© {{ currentYear }} - Built with Vue 3 and Tailwind CSS</span>
+          <span>{{ currentYear }} - Built with Vue 3 and Tailwind CSS</span>
         </div>
       </div>
     </div>

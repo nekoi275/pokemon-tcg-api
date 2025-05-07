@@ -54,7 +54,7 @@ onUnmounted(() => {
     <div v-if="isLoading">Loading card data...</div>
     <div v-else-if="error" class="error-message">{{ error }}</div>
     <div class="flex flex-wrap justify-center items-center gap-4">
-      <SingleCard v-for="cardBrief in cards" :card="cardBrief" />
+      <SingleCard v-for="cardBrief in cards" :cardBrief="cardBrief" />
     </div>
   </div>
 </template>

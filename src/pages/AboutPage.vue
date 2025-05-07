@@ -7,7 +7,7 @@ import Footer from "@/components/Footer.vue";
   <section
     class="min-h-screen pb-6"
     :style="{
-      '--dot-bg': '#202833',
+      '--dot-bg': '#0b0c10',
       '--dot-color': '#66fcf1',
       '--dot-size': '1px',
       '--dot-space': '22px',

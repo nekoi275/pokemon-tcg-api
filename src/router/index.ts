@@ -3,6 +3,7 @@ import LandingPage from "@/pages/LandingPage.vue";
 import CardsListPage from "@/pages/CardsListPage.vue";
 import AboutPage from "@/pages/AboutPage.vue";
 import ContactPage from "@/pages/ContactPage.vue";
+import CardDetailPage from "@/pages/CardDetailPage.vue"
 
 const routes = [
   {
@@ -24,6 +25,12 @@ const routes = [
     path: "/contact",
     name: "Contact",
     component: ContactPage,
+  },
+  {
+    path: "/cards/:id",
+    name: "CardDetail",
+    component: CardDetailPage,
+    props: true
   },
 ];
 

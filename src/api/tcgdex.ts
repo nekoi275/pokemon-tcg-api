@@ -7,21 +7,54 @@ export interface CardBrief {
   imageUrl?: string;
 }
 
-export interface SetBrief {
+export interface Card {
   id: string;
   name: string;
-  logo?: string;
-  logoUrl?: string;
-  cardCount: {
-    total: number;
-    official: number;
-  }
-}
-
-export interface Card extends CardBrief {
+  image?: string;
+  imageUrl?: string;
   category: string;
+  illustrator?: string;
+  localId?: string;
   rarity: string;
-  set: SetBrief;
+  set: {
+    id: string;
+    name: string;
+    logo?: string;
+    logoUrl?: string;
+    symbol?: string;
+    cardCount: {
+      total: number;
+      official: number;
+    };
+  };
+  variants?: {
+    firstEdition?: boolean;
+    holo?: boolean;
+    normal?: boolean;
+    reverse?: boolean;
+    wPromo?: boolean;
+  };
+  hp?: number;
+  types?: string[];
+  evolveFrom?: string;
+  description?: string;
+  stage?: string;
+  attacks?: {
+    cost: string[];
+    name: string;
+    effect: string;
+    damage?: number;
+  }[];
+  weaknesses?: {
+    type: string;
+    value: string;
+  }[];
+  retreat?: number;
+  regulationMark?: string;
+  legal?: {
+    standard: boolean;
+    expanded: boolean;
+  };
 }
 
 function formatImageUrl(baseUrl: string): string {
@@ -29,7 +62,6 @@ function formatImageUrl(baseUrl: string): string {
 }
 
 const cardCache = new Map<string, Card>();
-const cardsCache = new Array<CardBrief>();
 
 export const fetchCard = async (id: string): Promise<Card> => {
   if (cardCache.has(id)) {
@@ -44,34 +76,10 @@ export const fetchCard = async (id: string): Promise<Card> => {
   if (card.image) {
     card.imageUrl = formatImageUrl(card.image);
   }
+
   cardCache.set(id, card);
 
   return card;
-};
-
-export const fetchAllCards = async (): Promise<CardBrief[]> => {
-  if (cardsCache.length > 0) {
-    return cardsCache;
-  }
-  
-  const response = await fetch(`${BASE_URL}/cards`);
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  
-  const cards = await response.json();
-  
-  cards.forEach((card: CardBrief) => {
-    if (card.image) {
-      card.imageUrl = formatImageUrl(card.image);
-    }
-  });
-  
-  cardsCache.length = 0;
-  cardsCache.push(...cards);
-
-  return cards;
 };
 
 export const fetchSomeCards = async (
@@ -87,7 +95,7 @@ export const fetchSomeCards = async (
   }
 
   const cards = await response.json();
-  
+
   cards.forEach((card: CardBrief) => {
     if (card.image) {
       card.imageUrl = formatImageUrl(card.image);
