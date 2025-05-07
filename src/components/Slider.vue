@@ -82,7 +82,7 @@ onBeforeUnmount(() => {
         :style="{ backgroundImage: `url(${slide.img})` }"
         class="h-screen w-full flex-shrink-0 bg-cover bg-center"
       >
-        <div class="p-8 bg-dark-50 w-96 mt-20 ml-30 rounded-xl">
+        <div class="p-8 bg-dark-50 w-96 mt-10 m-auto rounded-xl">
           <h3 class="text-2xl pb-4">{{ slide.heading }}</h3>
           <p>{{ slide.text }}</p>
         </div>

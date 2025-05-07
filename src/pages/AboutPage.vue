@@ -19,7 +19,7 @@ import Footer from "@/components/Footer.vue";
     }"
   >
     <img class="w-1/2 m-auto pt-30" :src="About1" />
-    <p class="block w-1/2 m-auto py-4">
+    <p class="block md:w-1/2 m-auto p-4">
       The Pokémon Trading Card Game (Japanese: ポケモンカードゲーム, Hepburn:
       Pokemon Kādo Gēmu, "Pokémon Card Game"), abbreviated as PTCG or Pokémon
       TCG, is a tabletop and collectible card game developed by Creatures Inc.
@@ -30,7 +30,7 @@ import Footer from "@/components/Footer.vue";
       Gathering. Wizards published eight expansion sets between 1998 and 2003,
       after which point licensing was transferred to The Pokémon Company.
     </p>
-    <p class="block w-1/2 m-auto py-4">
+    <p class="block md:w-1/2 m-auto p-4">
       Players assume the role of Pokémon Trainers engaging in battle, and play
       with 60-card decks. Standard gameplay cards include Pokémon cards, Energy
       cards, and Trainer cards. Pokémon are introduced in battle from a "bench"
@@ -44,7 +44,7 @@ import Footer from "@/components/Footer.vue";
       usage of counters to indicate damage dealt and status effects. This is
       also a sport.
     </p>
-    <p class="block w-1/2 m-auto py-4">
+    <p class="block md:w-1/2 m-auto p-4">
       The Pokémon TCG has been the subject of both officially-sanctioned and
       informal tournaments. Wizards of the Coast staged multiple tournaments
       across American malls and stores. Official tournaments are currently
@@ -56,7 +56,7 @@ import Footer from "@/components/Footer.vue";
       in 2023, it was replaced with Pokémon Trading Card Game Live (PC) and
       Pokémon Trading Card Game Pocket (mobile) in 2024.
     </p>
-    <p class="block w-1/2 m-auto py-4">
+    <p class="block md:w-1/2 m-auto p-4">
       As of March 2024, the game has produced over 64.8 billion cards worldwide.
       Beside formal competitions and informal battling, the Pokémon TCG has also
       been the subject of collecting hobbies, with an extensive market for
