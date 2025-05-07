@@ -90,7 +90,7 @@ const booleanToYesNo = (value: boolean | undefined): string => {
         <div class="md:w-1/2 p-6">
           <!-- Basic info -->
           <div class="mb-6">
-            <h3 class="font-semibold text-lg mb-3">Card Details</h3>
+            <h3 class="font-semibold text-lg mb-3 text-cyan-100">Card Details</h3>
             <div class="grid grid-cols-2 gap-4 text-dark-50">
               <div v-if="card.illustrator">
                 <p class="text-sm text-gray-500">Illustrator</p>
