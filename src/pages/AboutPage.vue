@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import About1 from "@/assets/about_1.jpg";
+import Footer from "@/components/Footer.vue";
 </script>
 
 <template>
   <section
-    class="min-h-screen"
+    class="min-h-screen pb-6"
     :style="{
       '--dot-bg': '#202833',
       '--dot-color': '#66fcf1',
@@ -62,4 +63,5 @@ import About1 from "@/assets/about_1.jpg";
       individual Pokémon cards, packs, and ephemera.
     </p>
   </section>
+  <Footer />
 </template>

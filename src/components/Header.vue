@@ -11,6 +11,11 @@ import Logo from "@/assets/logo.png";
     /></router-link>
     <div class="absolute right-4"> 
       <router-link
+        to="/"
+        class="inline text-dark-100 p-2 mr-4 border-b-4 border-cyan-100 hover:text-cyan-100 hover:border-dark-50 cursor-pointer"
+        >Home</router-link
+      >
+      <router-link
         to="/cards"
         class="inline text-dark-100 p-2 mr-4 border-b-4 border-cyan-100 hover:text-cyan-100 hover:border-dark-50 cursor-pointer"
         >Cards</router-link

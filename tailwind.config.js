@@ -16,6 +16,24 @@ export default {
           100: "#46a29f",
         },
       },
+      keyframes: {
+        "showLetter": {
+          "100%": {transform: "translateY(-50px)"}
+        },
+        "openEnvelope1": {
+          "0%": {"transform": "rotateX(0deg)"},
+          "100%": {"transform": "rotateX(90deg)"}
+        },
+        "openEnvelope2": {
+          "0%": {"transform": "rotateX(90deg)"},
+          "100%": {"transform": "rotateX(180deg)"}
+        }
+      },
+      animation: {
+        "show-letter": "showLetter 0.5s ease forwards 0.5s",
+        "open-envelope-1": "openEnvelope1 0.25s linear forwards",
+        "open-envelope-2": "openEnvelope2 0.25s linear forwards 0.25s"
+      }
     },
   },
   plugins: [],

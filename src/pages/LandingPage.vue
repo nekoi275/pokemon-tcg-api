@@ -95,7 +95,7 @@ const scrollToTop = (): void => {
       >
       <button
         @click="scrollToTop"
-        class="cursor-pointer row-span-2 col-span-2 bg-cyan-50 text-white rounded-lg shadow-lg hover:bg-cyan-100 transition-all duration-300 flex items-center group"
+        class="cursor-pointer col-span-2 row-start-3 bg-cyan-50 text-white rounded-lg shadow-lg hover:bg-cyan-100 transition-all duration-300 flex items-center group"
       >
         <svg
           class="w-5 h-5 m-auto group-hover:translate-y-[-3px] transition-transform duration-300"
