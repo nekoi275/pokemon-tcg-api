@@ -39,13 +39,18 @@ const scrollToTop = (): void => {
 </script>
 
 <template>
-  <div class="h-screen w-full overflow-y-scroll snap-y snap-mandatory" ref="scrollContainer">
+  <div
+    class="h-screen w-full overflow-y-scroll snap-y snap-mandatory"
+    ref="scrollContainer"
+  >
     <Slider
       class="pt-20 h-screen w-full snap-start"
       :slides="slides"
       :auto-slide-interval="6000"
     ></Slider>
-    <section class="w-full snap-start h-screen sm:block md:grid px-10 pt-30 md:p-30 grid-cols-3 gap-8">
+    <section
+      class="w-full snap-start h-screen sm:block md:grid px-10 pt-30 md:p-30 grid-cols-3 gap-8"
+    >
       <div>
         <img :src="Landing1" class="w-3/4 m-auto" />
         <h1 class="text-2xl sm:text-left md:text-center py-6">
@@ -65,37 +70,41 @@ const scrollToTop = (): void => {
       </div>
       <div>
         <img :src="Landing3" class="w-3/4 m-auto" />
-        <h1 class="text-2xl py-6 sm:text-left md:text-center">A JSON REST API</h1>
-        <p class="hidden md:block">A full featured JSON REST API fo get any card informations.</p>
+        <h1 class="text-2xl py-6 sm:text-left md:text-center">
+          A JSON REST API
+        </h1>
+        <p class="hidden md:block">
+          A full featured JSON REST API fo get any card informations.
+        </p>
       </div>
     </section>
     <section
-      class="h-screen w-full snap-start bg-grey-50 text-dark-100 grid lg:grid-flow-col p-10 gap-4 lg:grid-rows-3 lg:p-30 lg:gap-8"
+      class="grid gap-4 grid-cols-2 lg:grid-cols-4 h-screen w-full snap-start bg-grey-50 text-dark-100 py-25 px-4"
     >
       <a
-        class="md:row-span-3 text-2xl md:w-3/4 border-8 border-cyan-50 text-center p-2 rounded-xl cursor-pointer border-double hover:border-cyan-100 hover:shadow-2xl"
+        class="lg:col-span-1 lg:row-span-2 col-span-2 text-xl border-8 border-cyan-50 text-center p-2 rounded-xl cursor-pointer border-double hover:border-cyan-100 hover:shadow-2xl"
         href="https://tcgdex.dev/"
         target="_blank"
         >Check out the API</a
       >
       <router-link
-        class="md:col-span-2 text-2xl md:w-3/4 border-8 border-cyan-50 text-center p-2 rounded-xl cursor-pointer border-dashed hover:border-cyan-100 hover:shadow-2xl"
+        class="text-xl border-8 border-cyan-50 text-center p-2 rounded-xl cursor-pointer border-dashed hover:border-cyan-100 hover:shadow-2xl"
         to="/cards"
         >Check out the cards</router-link
       >
       <router-link
         to="/about"
-        class="md:col-span-2 md:row-span-2 text-2xl md:w-3/4 border-8 border-cyan-50 text-center p-2 rounded-xl cursor-pointer border-dotted hover:border-cyan-100 hover:shadow-2xl"
+        class="text-xl border-8 border-cyan-50 text-center p-2 rounded-xl cursor-pointer border-dotted hover:border-cyan-100 hover:shadow-2xl"
         >Find out more info</router-link
       >
       <router-link
         to="/contact"
-        class="md:col-span-2 md:row-span-3 text-2xl md:w-3/4 border-8 border-cyan-100 text-center p-2 rounded-xl cursor-pointer hover:border-cyan-50 hover:shadow-2xl"
+        class="lg:row-span-2 border-8 text-xl border-cyan-100 text-center p-2 rounded-xl cursor-pointer hover:border-cyan-50 hover:shadow-2xl"
         >Contact me</router-link
       >
       <button
         @click="scrollToTop"
-        class="cursor-pointer md:col-span-2 md:row-start-3 bg-cyan-50 text-white rounded-lg shadow-lg hover:bg-cyan-100 transition-all duration-300 flex items-center group"
+        class="lg:col-span-2 cursor-pointer bg-cyan-50 text-white rounded-lg shadow-lg hover:bg-cyan-100 transition-all duration-300 flex items-center group"
       >
         <svg
           class="w-5 h-5 m-auto group-hover:translate-y-[-3px] transition-transform duration-300"
