@@ -104,3 +104,29 @@ export const fetchSomeCards = async (
 
   return cards;
 };
+
+export const searchCards = async (searchParams: Record<string, string>): Promise<CardBrief[]> => {
+  const queryParams = new URLSearchParams();
+  
+  Object.entries(searchParams).forEach(([key, value]) => {
+    if (value) {
+      queryParams.append(key, value);
+    }
+  });
+
+  const response = await fetch(`${BASE_URL}/cards?${queryParams.toString()}`);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const cards = await response.json();
+
+  cards.forEach((card: CardBrief) => {
+    if (card.image) {
+      card.imageUrl = formatImageUrl(card.image);
+    }
+  });
+
+  return cards;
+};

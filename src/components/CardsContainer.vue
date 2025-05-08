@@ -1,17 +1,63 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
-import { fetchSomeCards, CardBrief } from "@/api/tcgdex";
+import { onMounted, onUnmounted, ref, watch } from "vue";
+import { fetchSomeCards, CardBrief, searchCards } from "@/api/tcgdex";
 import SingleCard from "@/components/SingleCard.vue";
 
-const cards = ref<CardBrief[] | []>([]);
+const props = defineProps<{
+  searchParams?: Record<string, string>;
+}>();
+
+const cards = ref<CardBrief[]>([]);
 const isLoading = ref(false);
 const error = ref<string | null>(null);
 const pageNumber = ref<number>(1);
 const perPage = ref<number>(12);
 const hasMore = ref<boolean>(true);
+const isSearchMode = ref(false);
+
+watch(() => props.searchParams, async (newParams) => {
+  if (newParams && Object.values(newParams).some(v => v)) {
+    await executeSearch(newParams);
+  } else {
+    resetAndLoad();
+  }
+}, { deep: true });
+
+const resetState = () => {
+  cards.value = [];
+  pageNumber.value = 1;
+  hasMore.value = true;
+  error.value = null;
+  isSearchMode.value = false;
+};
+
+const resetAndLoad = async () => {
+  resetState();
+  await loadMoreCards();
+};
+
+const executeSearch = async (params: Record<string, string>) => {
+  resetState();
+  isSearchMode.value = true;
+  
+  isLoading.value = true;
+  try {
+    const cleanParams = Object.fromEntries(
+      Object.entries(params).filter(([_, value]) => value !== '')
+    );
+    
+    const searchResults = await searchCards(cleanParams);
+    cards.value = searchResults;
+    hasMore.value = false;
+  } catch (err) {
+    error.value = err instanceof Error ? err.message : "Unknown error";
+  } finally {
+    isLoading.value = false;
+  }
+};
 
 const loadMoreCards = async () => {
-  if (isLoading.value || !hasMore.value) return;
+  if (isLoading.value || !hasMore.value || isSearchMode.value) return;
 
   isLoading.value = true;
   try {
@@ -32,6 +78,8 @@ const loadMoreCards = async () => {
 };
 
 const handleScroll = () => {
+  if (isSearchMode.value) return;
+
   const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
   const isNearBottom = scrollTop + clientHeight >= scrollHeight - 500;
 
@@ -41,9 +89,12 @@ const handleScroll = () => {
 };
 
 onMounted(async () => {
-  loadMoreCards();
+  if (!props.searchParams || !Object.values(props.searchParams).some(v => v)) {
+    await loadMoreCards();
+  }
   window.addEventListener('scroll', handleScroll);
 });
+
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
@@ -53,8 +104,11 @@ onUnmounted(() => {
   <div class="pt-16">
     <div v-if="isLoading">Loading card data...</div>
     <div v-else-if="error" class="error-message">{{ error }}</div>
+    <div v-else-if="cards.length === 0 && !isLoading" class="text-center py-8">
+      No cards found
+    </div>
     <div class="flex flex-wrap justify-center items-center gap-4">
-      <SingleCard v-for="cardBrief in cards" :cardBrief="cardBrief" />
+      <SingleCard v-for="cardBrief in cards" :key="cardBrief.id" :cardBrief="cardBrief" />
     </div>
   </div>
 </template>
